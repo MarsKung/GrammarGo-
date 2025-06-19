@@ -1,0 +1,28 @@
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: flex-start; background-color: #f0f2f5; padding-top: 20px; }
+.container { display: flex; gap: 20px; }
+.game-area { width: 700px; }
+.sidebar { width: 300px; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+#game-board { display: grid; grid-template-columns: repeat(10, 1fr); gap: 5px; border: 2px solid #333; padding: 10px; background-color: #e0f7fa; }
+.square { width: 60px; height: 60px; background-color: #a7ffeb; border: 1px solid #ccc; display: flex; justify-content: center; align-items: center; font-weight: bold; position: relative; }
+.square.start { background-color: #4caf50; color: white; }
+.square.finish { background-color: #f44336; color: white; }
+.square.square-chance-destiny { background-color: #ffd700; font-weight: bold; }
+.square.square-chance-destiny::after { content: '★'; color: #fff; font-size: 24px; text-shadow: 0 0 3px #000; }
+.player-piece { width: 15px; height: 15px; border-radius: 50%; border: 2px solid white; position: absolute; transition: all 0.5s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+#controls, #player-info, #log-container { margin-top: 20px; }
+#log { height: 150px; overflow-y: scroll; border: 1px solid #ddd; padding: 10px; background-color: #fafafa; border-radius: 4px; }
+#log p { margin: 2px 0; padding: 4px; border-bottom: 1px solid #eee; font-size: 14px; }
+button { padding: 10px 15px; font-size: 16px; cursor: pointer; border: none; border-radius: 5px; background-color: #007bff; color: white; transition: background-color 0.2s; }
+button:hover:not(:disabled) { background-color: #0056b3; }
+button:disabled { background-color: #ccc; cursor: not-allowed; }
+#question-modal, #chance-destiny-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); display: none; justify-content: center; align-items: center; z-index: 1000; }
+.modal-content { background: white; padding: 30px; border-radius: 10px; text-align: center; width: 400px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+.modal-buttons { margin-top: 20px; display: flex; justify-content: space-around; }
+#dice-container { display: none; width: 50px; height: 50px; margin: 10px auto; }
+#dice { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; font-size: 24px; font-weight: bold; background-color: white; border: 2px solid #333; border-radius: 5px; color: #333; }
+@keyframes roll {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.2); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+.rolling { animation: roll 0.2s linear infinite; }

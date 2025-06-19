@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammar Go!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+</head>
+<body data-room-id="{{ room_id or '' }}">
+    <div id="lobby-container">
+        <h1>歡迎來到 Grammar Go!</h1>
+        <div class="lobby-actions">
+            <button id="create-room-btn">建立新房間</button>
+            <div class="join-form">
+                <input type="text" id="room-id-input" placeholder="輸入房間號碼">
+                <button id="join-room-btn">加入房間</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="game-container" style="display: none;">
+        <div class="container">
+            <div class="game-area">
+                <h2 id="room-title">房間: </h2>
+                <div id="game-board"></div>
+                <div id="log-container">
+                    <h3>遊戲日誌</h3>
+                    <div id="log"></div>
+                </div>
+            </div>
+            <div class="sidebar">
+                <div id="login-area">
+                    <h3>加入遊戲</h3>
+                    <input type="text" id="player-name" placeholder="輸入你的名字">
+                    <button id="join-button">確認加入</button>
+                </div>
+                <div id="game-controls" style="display: none;">
+                    <h3>遊戲控制</h3>
+                    <div id="dice-container"><div id="dice"></div></div>
+                    <p id="turn-indicator">輪到：</p>
+                    <button id="roll-button" disabled>擲骰子</button>
+                </div>
+                <div id="player-info">
+                    <h3>玩家列表</h3>
+                    <ul id="player-list"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="question-modal">
+        <div class="modal-content">
+            <h3 id="question-rule"></h3>
+            <p id="question-prompt"></p>
+            <input type="text" id="answer-input" size="40">
+            <button id="submit-answer-button">提交答案</button>
+        </div>
+    </div>
+    <div id="chance-destiny-modal">
+        <div class="modal-content">
+            <h3>機會或命運？</h3>
+            <p>你來到了一個特殊地點，請做出選擇！</p>
+            <div class="modal-buttons">
+                <button id="chance-button">選擇 機會</button>
+                <button id="destiny-button">選擇 命運</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+</body>
+</html>
