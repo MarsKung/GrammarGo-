@@ -10,13 +10,16 @@
 <body data-room-id="{{ room_id or '' }}">
     <div id="lobby-container">
         <h1>歡迎來到 Grammar Go!</h1>
+        <p>選擇你的遊戲方式：</p>
         <div class="lobby-actions">
-            <button id="create-room-btn">建立新房間</button>
+            <button id="auto-match-btn" class="lobby-btn">⚡ 自動配對</button>
+            <button id="create-room-btn" class="lobby-btn">🚪 建立私人房間</button>
             <div class="join-form">
                 <input type="text" id="room-id-input" placeholder="輸入房間號碼">
                 <button id="join-room-btn">加入房間</button>
             </div>
         </div>
+        <p id="matchmaking-status" style="display: none;">正在搜尋對手...</p>
     </div>
 
     <div id="game-container" style="display: none;">
@@ -31,16 +34,23 @@
             </div>
             <div class="sidebar">
                 <div id="login-area">
-                    <h3>加入遊戲</h3>
-                    <input type="text" id="player-name" placeholder="輸入你的名字">
+                    <h3>你的名字</h3>
+                    <input type="text" id="player-name" placeholder="輸入你的大名">
                     <button id="join-button">確認加入</button>
                 </div>
+
+                <div id="host-controls" style="display: none;">
+                    <h3>房主控制</h3>
+                    <button id="start-game-btn" disabled>開始遊戲 (2人以上)</button>
+                </div>
+
                 <div id="game-controls" style="display: none;">
                     <h3>遊戲控制</h3>
                     <div id="dice-container"><div id="dice"></div></div>
                     <p id="turn-indicator">輪到：</p>
                     <button id="roll-button" disabled>擲骰子</button>
                 </div>
+                
                 <div id="player-info">
                     <h3>玩家列表</h3>
                     <ul id="player-list"></ul>
@@ -67,7 +77,7 @@
             </div>
         </div>
     </div>
-
+    
     <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
 </body>
 </html>

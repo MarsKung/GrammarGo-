@@ -26,3 +26,46 @@ button:disabled { background-color: #ccc; cursor: not-allowed; }
     100% { transform: rotate(360deg) scale(1); }
 }
 .rolling { animation: roll 0.2s linear infinite; }
+/* /GrammarGo_Pro/project/static/css/style.css */
+
+/* --- 新增：按鈕載入中樣式 --- */
+
+/* 讓按鈕可以容納絕對定位的 spinner */
+#submit-answer-button {
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+/* 當按鈕有 .loading class 時的樣式 */
+#submit-answer-button.loading {
+    /* 讓文字消失，但保留空間 */
+    color: transparent;
+    cursor: wait;
+}
+
+/* 使用 ::after 偽元素來建立 spinner，不需額外 HTML */
+#submit-answer-button.loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border: 4px solid transparent;
+    border-top-color: #ffffff; /* spinner 的顏色 */
+    border-radius: 50%;
+    animation: spin 1s ease infinite;
+}
+
+/* 旋轉動畫的定義 */
+@keyframes spin {
+    from {
+        transform: rotate(0turn);
+    }
+    to {
+        transform: rotate(1turn);
+    }
+}
